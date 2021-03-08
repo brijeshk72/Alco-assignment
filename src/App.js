@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter,Switch, Route} from "react-router-dom";
+
+// public Css for style
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/common.scss';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// import components
+import Home from './pages/Home';
+import Shop from "./pages/Shop";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/shop" exact component={Shop} />
+            <Route path="/shop/:categoryName" exact component={Shop} />
+
+            <Route path="/product-details/:productId" exact component={ProductDetails} />
+           <Route path="/cart" exact component={Cart} />
+
+            
+          </Switch>
+      </BrowserRouter>
     </div>
   );
 }
